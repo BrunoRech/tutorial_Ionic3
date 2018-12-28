@@ -1,0 +1,47 @@
+<!--
+tirando o header: 
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>intro</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+tirando o padding(espacamento)
+<ion-content padding>
+-->
+<ion-content>
+  <ion-slides pager >
+
+    <ion-slide class="slides">
+   
+       <img src="/assets/imgs/slide1_img.png">
+
+      <h2>Slide Home</h2>
+      <p>Testando um novo paragrafo nesse slide :)</p>
+      <p><strong>Parece que esta dando certo</strong> </p>
+      <!--tag strong e bold-->
+    </ion-slide>
+  
+    <ion-slide>
+        <img src="/assets/imgs/slide2_img.png" class="slides">
+      <h2>Slide 2</h2>
+    </ion-slide>
+  
+    <ion-slide>
+        <img src="/assets/imgs/slide3_img.png" class="slides">
+      <h2>Slide 3</h2>
+    </ion-slide>
+
+    <ion-slide>
+        <img src="/assets/imgs/slide4_img.png" class="slides">
+      <h2>Slide 4</h2>
+      <!--Evento de click em 1 link no slide ="funcao"-->
+      <a (click)="goToTabsPage()" >continuar</a>
+    </ion-slide>
+  
+  </ion-slides>
+  
+</ion-content>
