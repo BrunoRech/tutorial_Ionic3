@@ -13,8 +13,12 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { FeedPageModule } from '../pages/feed/feed.module';
 import { IntroPageModule } from '../pages/intro/intro.module';
 import { MovieProvider } from '../providers/movie/movie';
+import { UserDataProvider } from '../providers/user-data/user-data';
 
 /*Importar os novos modulos aqui (ex: feedPageModule)*/
+//sempre que criar novas paginas tem de se colocar dentro dos
+//declarations e entryComponents
+
 @NgModule({
   declarations: [
     MyApp,
@@ -42,7 +46,8 @@ import { MovieProvider } from '../providers/movie/movie';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    MovieProvider
+    MovieProvider,
+    UserDataProvider
   ]
 })
 export class AppModule {}
