@@ -17,6 +17,8 @@ import { MovieProvider } from '../../providers/movie/movie';
 })
 export class FeedPage {/*Manda a classe feed (p/ exemplo na tabs.ts) */
   
+  public movieList = new Array<any>();
+
   public feed = {//JSON
     title: "Erik Von-Strawssen",
     date:"December 5, 1655",
@@ -35,6 +37,7 @@ export class FeedPage {/*Manda a classe feed (p/ exemplo na tabs.ts) */
   ionViewDidLoad() {
     this.movieProv.getPopularMovies().subscribe(data=>{
       console.log(data);
+      this.movieList = (data as any).results;
     },
     error => {
       console.log(error);

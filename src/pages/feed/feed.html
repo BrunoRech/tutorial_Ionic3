@@ -14,20 +14,22 @@
 
 
 <ion-content padding>
-  <ion-card>
+  <!--looping usando diretiva estrutural-->
+  <ion-card *ngFor="let movie of movieList">
 
     <ion-item>
-      <ion-avatar item-start>McFly
+      <ion-avatar item-start>
         <img src="/assets/imgs/avatar.png">
       </ion-avatar>
-      <h2 class="feed_userName">{{feed.title}}</h2>
-      <p class="feed_date">{{feed.date}}</p>
+      <h2 class="feed_userName">{{movie.original_title}}</h2>
+      <p class="feed_date">{{movie.release_date}}</p>
     </ion-item>
-
-    <img src="/assets/imgs/post.png">
+    <!--Aplicando 1 bind no src p poder usar variaveis
+     O w300 significa width = 300px -->
+    <img [src]="'https://image.tmdb.org/t/p/w300/'+movie.backdrop_path">
 
     <ion-card-content>
-      <p>{{feed.description}}</p>
+      <p>{{movie.overview}}</p>
     </ion-card-content>
 
     <ion-row>
