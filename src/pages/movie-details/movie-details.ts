@@ -30,7 +30,7 @@ export class MovieDetailsPage {
     this.filmeId = this.navParams.get("id");
     //resposta da web
     this.movProv.getMovieById(this.filmeId).subscribe(
-      data =>{//func .get pega todos os parametro
+      data =>{//func .get pega todos pelos parametros
         let retorno = (data as any);
         this.filme = retorno;
       }, error =>{
