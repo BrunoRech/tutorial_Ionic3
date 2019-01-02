@@ -18,6 +18,7 @@ import { SobrePage } from '../pages/sobre/sobre';
 import { ConfiguracoesPageModule } from '../pages/configuracoes/configuracoes.module';
 import { SobrePageModule } from '../pages/sobre/sobre.module';
 import { PerfilPageModule } from '../pages/perfil/perfil.module';
+import { MovieDetailsPage } from '../pages/movie-details/movie-details';
 
 /*Importar os novos modulos aqui (ex: feedPageModule)*/
 //sempre que criar novas paginas tem de se colocar dentro dos
@@ -30,7 +31,8 @@ import { PerfilPageModule } from '../pages/perfil/perfil.module';
     TabsPage,
     ConfiguracoesPage,
     PerfilPage,
-    SobrePage
+    SobrePage,
+    MovieDetailsPage
   ],
   imports: [ 
     BrowserModule,
@@ -46,7 +48,8 @@ import { PerfilPageModule } from '../pages/perfil/perfil.module';
     TabsPage,
     ConfiguracoesPage,
     PerfilPage,
-    SobrePage
+    SobrePage,
+    MovieDetailsPage
   ],
   providers: [
     StatusBar,

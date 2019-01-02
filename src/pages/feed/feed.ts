@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { MovieProvider } from '../../providers/movie/movie';
+import { MovieDetailsPage } from '../movie-details/movie-details';
 
 /**
  * Generated class for the FeedPage page.
@@ -47,6 +48,13 @@ export class FeedPage {/*Manda a classe feed (p/ exemplo na tabs.ts) */
       content: "Carregando filmes...",
     });
     this.loader.present();
+  }
+  abrirDetalhes(filme){
+    console.log(filme);
+    console.log("filme ok");
+    //push joga a pag detalhes na view
+    this.navCtrl.push(MovieDetailsPage,{id: filme.id});
+    
   }
   closeLoading(){
     this.loader.dismiss();
