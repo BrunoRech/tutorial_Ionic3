@@ -10,21 +10,22 @@ export class MovieProvider {
   constructor(public http: HttpClient) {
     console.log('Hello MoovieProvider Provider');
   }
-
-  public getLatestMovies(){
-    return this.http.get(this.basicPath+"/movie/latest"+this.getApiKey());
+  //se nao mandar a pag pro metodo, o defaut vai ser a pag 1
+  public getLatestMovies(page = 1){
+    //o '&' separa as 2 variaveis
+    return this.http.get(this.basicPath+`/movie/latest?page=${page}&api_key=`+this.getApiKey());
   }
 
   public getApiKey() : string{
-    return "?api_key=c905839a8ab34d6e636b1800218fefc6";
+    return "c905839a8ab34d6e636b1800218fefc6";
   }
   //usando crase n precisa concatenar usando +
   //ele vai mudar a string de acordo com o id do filme
   public getMovieById(id){
-    return this.http.get(this.basicPath+`/movie/${id}popular`+this.getApiKey());
+    return this.http.get(this.basicPath+`/movie/${id}popular?api_key=`+this.getApiKey());
   }
-  public getPopularMovies(){
-    return this.http.get(this.basicPath+"/movie/popular"+this.getApiKey());
+  public getPopularMovies(page = 1){
+    return this.http.get(this.basicPath+`/movie/popular?page=${page}&api_key=`+this.getApiKey());
   }
 
 }

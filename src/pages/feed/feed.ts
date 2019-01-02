@@ -21,6 +21,7 @@ export class FeedPage {/*Manda a classe feed (p/ exemplo na tabs.ts) */
   public movieList = new Array<any>();
   public refresher;
   public isRefreshing: boolean = false;
+  public page = 1;
   public feed = {//JSON
     title: "Erik Von-Strawssen",
     date:"December 5, 1655",
@@ -30,6 +31,7 @@ export class FeedPage {/*Manda a classe feed (p/ exemplo na tabs.ts) */
     comment_age: "11h ago"
   }
   public userName = "Erik Von-Strawssen";exemplo
+  public infiniteScroll;
 
   constructor(public navCtrl: NavController,
      public navParams: NavParams,
@@ -59,11 +61,21 @@ export class FeedPage {/*Manda a classe feed (p/ exemplo na tabs.ts) */
   closeLoading(){
     this.loader.dismiss();
   }
-  carregarFilmes(){
+  carregarFilmes(newPage : boolean = false){
      this.openLoading();
-    this.movieProv.getPopularMovies().subscribe(data=>{
+    this.movieProv.getPopularMovies(this.page).subscribe(data=>{
       console.log(data);
-      this.movieList = (data as any).results;
+      
+
+      if(newPage){//se for uma nova pag, adiciona os novos filmes aos antigos
+        console.log("nova pag");
+        this.movieList = this.movieList.concat((data as any).results);
+        this.infiniteScroll.complete();//fechar o infinity scroll
+      }else{//se nao, sobreescreve tudo com os novos
+        this.movieList = (data as any).results;
+        console.log("primeira pag");
+      }
+
       this.closeLoading();
       if(this.isRefreshing){
         this.refresher.complete();
@@ -74,9 +86,16 @@ export class FeedPage {/*Manda a classe feed (p/ exemplo na tabs.ts) */
       console.log(error);
       this.closeLoading();
     }
-    )
-  
+    ) 
   }
+
+  doInfinite(infiniteScroll) {
+    this.page++;
+    this.infiniteScroll = infiniteScroll;
+    this.carregarFilmes(true);
+    console.log('Begin async operation');
+  }
+
   ionViewDidEnter() {//toda vez que o usuario entrar na pag
     this.carregarFilmes();
   }
